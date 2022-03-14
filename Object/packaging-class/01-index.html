@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var name = 'languiji';
+    name += 10;
+    var type = typeof(name); // 'string'
+    if (type.length === 6) {
+      type.text = 'string'; // new String 后无法保存  -> undefined
+    }
+    console.log(type.text); // undefined
+  </script>
+</body>
+</html>

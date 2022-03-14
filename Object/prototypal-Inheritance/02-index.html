@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+    // 使用一个中间量缓冲函数来继承父函数的原型
+    function Teacher(name, mSkill) {
+      this.name = name;
+      this.mSkill = mSkill;
+    }
+    Teacher.prototype = {
+      pSkill: 'js'
+    }
+    var t = new Teacher();
+    function Student() {
+      this.name = 'zhang'
+    }
+    function Buffer() {}
+    Buffer.prototype = new Teacher();
+    var buffer = new Buffer();
+    Student.prototype = buffer;
+    var student = new Student();
+  </script>
+</body>
+</html>

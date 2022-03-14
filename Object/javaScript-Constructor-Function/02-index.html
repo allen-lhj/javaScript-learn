@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // You can also create a constructor with parameters. For example.
+
+    // assigning parameters values to calling object
+    function Person(person_name, person_age, person_gender) {
+      this.name = person_name;
+      this.age = person_age;
+      this.gender = person_gender;
+      this.greet = function() {
+        return ('Hi' + ' ' + this.name);
+      }
+    }
+
+    var person1 = new Person('Jhon', 23, 'male');
+    var person2 = new Person('Sam', 25, 'female');
+  </script>
+</body>
+</html>
