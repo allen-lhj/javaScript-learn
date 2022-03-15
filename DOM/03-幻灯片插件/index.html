@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    ul {
+      list-style: none;
+    }
+    a {
+      text-decoration: none;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+    }
+    .slider_wrap {
+      width: 996px;
+      height: 480px;
+      margin: 50px auto;
+      display: flex;
+    }
+    .slider {
+      width: 853px;
+      height: 480px;
+    }
+    .slider-list {
+      position: relative;
+      width: 853px;
+      height: 480px;
+    }
+    .slider-list .slider-item {
+      display: none;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+    }
+    .slider-list .slider-item.active {
+      display: block;
+    }
+    .thumbs {
+      width: 142px;
+      height: 480px;
+    }
+    .thumbs-list {
+      height: 480px;
+    }
+    .thumbs-list .thumb-item {
+      opacity: .5;
+      height: 80px;
+    }
+    .thumbs-list .thumb-item.cur {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="slider_wrap">
+    <div class="slider">
+      <ul class="slider-list">
+        <li class="slider-item active">
+          <a href="javascript:;">
+            <img src="img/1.jpg" alt="">
+          </a>
+        </li>
+        <li class="slider-item">
+          <a href="javascript:;">
+            <img src="img/2.jpg" alt="">
+          </a>
+        </li>
+        <li class="slider-item">
+          <a href="javascript:;">
+            <img src="img/3.jpg" alt="">
+          </a>
+        </li>
+        <li class="slider-item">
+          <a href="javascript:;">
+            <img src="img/4.jpg" alt="">
+          </a>
+        </li>
+        <li class="slider-item">
+          <a href="javascript:;">
+            <img src="img/5.jpg" alt="">
+          </a>
+        </li>
+        <li class="slider-item">
+          <a href="javascript:;">
+            <img src="img/6.jpg" alt="">
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="thumbs">
+      <ul class="thumbs-list">
+        <li class="thumb-item cur">
+          <a href="javascript:;">
+            <img src="img/1.jpg" alt="">
+          </a>
+        </li>
+        <li class="thumb-item">
+          <a href="javascript:;">
+            <img src="img/2.jpg" alt="">
+          </a>
+        </li>
+        <li class="thumb-item">
+          <a href="javascript:;">
+            <img src="img/3.jpg" alt="">
+          </a>
+        </li>
+        <li class="thumb-item">
+          <a href="javascript:;">
+            <img src="img/4.jpg" alt="">
+          </a>
+        </li>
+        <li class="thumb-item">
+          <a href="javascript:;">
+            <img src="img/5.jpg" alt="">
+          </a>
+        </li>
+        <li class="thumb-item">
+          <a href="javascript:;">
+            <img src="img/6.jpg" alt="">
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <script>
+    ;(function() {
+      var Slider = function(opt) {
+        this.slider = document.getElementsByClassName(opt.sliderItem);
+        this.thumbs = document.getElementsByClassName(opt.thumbItem);
+        this.bindClick()
+      };
+      Slider.prototype = {
+        bindClick: function() {
+          var sliderItem = this.slider,
+              thumbItem = this.thumbs;
+          for(let i = 0; i < thumbItem.length; i++) {
+            thumbItem[i].onclick = function() {
+              for (let j = 0; j < thumbItem.length; j++) {
+                thumbItem[j].className = 'thumb-item';
+                sliderItem[j].className = 'slider-item';
+              }
+              thumbItem[i].className += ' cur';
+              sliderItem[i].className += ' active';
+            }
+          }
+        }
+      }
+      window.Slider = Slider;
+    })()
+    var Slider = new Slider({
+      sliderItem: 'slider-item',
+      thumbItem: 'thumb-item'
+    })
+    Slider()
+  </script>
+</body>
+</html>
