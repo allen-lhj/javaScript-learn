@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        123
+        <p>12</p>
+        <span></span>
+        <div></div>
+    </div>
+    <script>
+        var p = document.getElementsByTagName('p')[0];
+        console.log(p.nextSibling); // 下一个节点
+        console.log(p.previousSibling); // 上一个节点
+        console.log(p.nextElementSibling) // 下一个元素节点
+        console.log(p.previousSibling) // 上一个元素节点
+    </script>
+</body>
+</html>
