@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+        <p>123</p>
+    </div>
+    <script>
+        Element.prototype.aaa = 'aaa'
+        var box = document.getElementById('box');
+        console.log(box.aaa)
+        console.log(Element)
+        // document = {
+        //     getElementById,
+        //     ...
+        // }
+        // document 中包含getElement这些方法
+        // document = new HTMLDocument();
+        // HTMLDocument = new Document();
+    </script>
+</body>
+</html>
