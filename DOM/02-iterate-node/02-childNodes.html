@@ -24,7 +24,9 @@
     // documentFragment = 11
     var box = document.getElementsByClassName('box')[0]
     var nodeList = box.childNodes;
-    console.log(box.childNodes)
+    console.log(box.childNodes) // 子节点
+    console.log(box.children) // 子元素节点
+    console.log(box.childElementCount ===box.children.length)
     for (let i of nodeList) {
       console.log(i)
       if (i.nodeType === 1) {
