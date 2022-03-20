@@ -8,8 +8,21 @@
 </head>
 <body>
     <a href="" data-uri="towz" data-sort="free">天下无贼</a>
-    <a href="" data-uri="towz" data-sort="free">复仇者联盟</a>
-    <a href="" data-uri="towz" data-sort="free"></a>
-    <a href="" data-uri="towz" data-sort="free"></a>
+    <a href="" data-uri="fc" data-sort="pay">复仇者联盟</a>
+    <a href="" data-uri="obl" data-sort="free">欧罗巴报告</a>
+    <a href="" data-uri="plm" data-sort="free">普罗米修斯</a>
+    <script>
+			var links = document.getElementsByTagName('a');
+			for (let i = 0; i < links.length; i++) {
+				links[i].onclick = function() {
+					let sor = this.dataset.sort;
+					let uri = this.dataset.uri;
+
+					if (sort === 'free') {
+						window.open('http://baidu.com')
+					}
+				}
+			}
+    </script>
 </body>
 </html>
