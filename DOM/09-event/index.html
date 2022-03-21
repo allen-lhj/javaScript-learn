@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    button {
+      outline: none;
+    }
+    .loading {
+      background-color: #ddd;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <button>加载更多</button>
+  <script>
+    var oBtn = document.getElementsByTagName('button')[0];
+    oBtn.onclick = function() {
+      this.innerHTML = '加载中...';
+      this.className = 'loading';
+      var self = this;
+      setTimeout(function() {
+        console.log(1);
+        // this.style.backgroundColor = 'red'
+        self.innerHTML = '加载更多';
+        self.className = '';
+      },2000)
+    }
+    // 具柄方式，当再次绑定onclick事件时会将上面的函数覆盖
+    oBtn.onclick = function() {
+      console.log(123)
+    }
+    // addEventListener 绑定同一个函数，也会执行一次，因为是同一个函数的引用
+    oBtn.addEventListener('click', test, false);
+    oBtn.addEventListener('click', test, false);
+    function test() {
+      console.log(1)
+    }
+    // addEventListener 想要多次执行需要绑定不同函数，或者匿名函数
+    oBtn.addEventListener('click', function() {
+      console.log(2)
+    }, false)
+    oBtn.addEventListener('click', function() {
+      console.log(3)
+    }, false)
+  </script>
+</body>
+</html>
