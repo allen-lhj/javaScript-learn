@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // ！clientX/Y 鼠标位置相对于当前页面可视区域的坐标（不包括滚动条的距离）
+    // ！screenX/Y 鼠标相对于屏幕的距离，显示器
+    // x/y 同clientX/Y firefox不支持
+
+    // pageX/pageY 鼠标位置相对于当前文档的坐标包括滚动条
+    // layerX/Y 同pageX/Y相同    有兼容问题
+    // offsetX/Y 鼠标相对于块元素的坐标
+    document.onclick = function(e) {
+      console.log(e.pageX)
+    }
+  </script>
+</body>
+</html>

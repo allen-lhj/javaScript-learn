@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      position: absolute;
+      left: 200px;
+      right: 200px;
+      width: 100px;
+      height: 100px;
+      background-color: aqua;
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+  <script>
+    // 缺点：只能拖动左上角
+    var box = document.getElementsByClassName('box')[0];
+    box.onmousedown = function(e) {
+      document.onmousemove = function(e) {
+        var e = e || window.event;
+        box.style.left = e.clientX + 'px'
+        box.style.top = e.clientY + 'px'
+      }
+      box.onmouseup = function(e) {
+        document.onmousemove = null;
+      }
+    }
+  </script>
+</body>
+</html>

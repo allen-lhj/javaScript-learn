@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 参数：executor 函数
+   new Promise(function(resolve, reject) {
+      // console.log(123) // 同步执行
+    })
+    // console.log(1)
+    // 先打印123，后打印1，
+
+    // pending：进行中
+    // fufilled(resolve): 成功
+    // reject： 失败
+    // 状态不可逆，promise固化以后，再对promise对象添加回调
+    // 是可以直接拿到这个结果，如果是事件的话，错过了就真的错过了
+    setTimeout(() => {
+      console.log('setTime')
+    }, 0)
+    const promise = new Promise(function(resolve, reject) {
+      // setInterval(() => {
+      //     Math.random() * 100 > 60 ? resolve('ok') : reject('no')
+      // }, 100)
+      console.log(0)
+      resolve(1)
+    })
+
+    promise.then((val) => {
+      console.log(val)
+    }, (err) => {
+      console.log(err)
+    })
+    console.log(3)
+    // Js的异步代码分为宏任务，与微任务
+    // 微任务有promise和node中的process.nextTick(); 
+    // 除了两种微任务，其他的都是宏任务
+    // 执行顺序，主线程，- >微任务，->宏任务
+
+    Promise.resolve().then(() => {
+      console.log('promise1');
+      setTimeout(() => {
+        console.log('setTimeout2')
+      })
+    })
+
+    setTimeout(() => {
+      console.log('setTimeout1');
+      Promise.resolve().then(() => {
+        console.log('promsie2')
+      })
+    })
+    // promise1 -> setTimeout1 promsie2 setTimeout2
+    // 前提是两个定时器的延迟时间相同
+    // 首先两个外层，promise是微任务先执行，输出promise1
+    // promise中的setTimeout会挂起，等待执行，
+    // settimeout中打印setTimeout1,promise挂起，
+    // 第二轮 先执行挂起的promise。打印promise2，最后打印setTimeout2
+  </script>
+  
+</body>
+</html>
