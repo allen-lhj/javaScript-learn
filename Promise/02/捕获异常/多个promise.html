@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var p1 = new Promise((resolve, reject) => {
+      setTimeout(function() {
+        reject(new Error('fail'))
+      })
+    }, 3000);
+    var p2 = new Promise((resolve, reject) => {
+      setTimeout(function() {
+        resolve(p1)
+      }, 1000)
+    })
+    // p2 依赖p1,p1是一个promise，所以p2的状态无效，等待p1执行完
+    // p1执行,抛出异常
+
+    var p3 = new Promise((resolve, reject) => {
+      resolve(1)
+      console.log(2)
+      // 不管是resolve，还是reject都不会终止函数执行
+    })
+  </script>
+</body>
+</html>

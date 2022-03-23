@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let promise = new Promise((resolve, reject) => {
+      resolve(a); // 没有a，尽管使用了resolve，还没执行回调，发生报错直接被reject捕获
+    })
+
+    promise.then((value) => {
+      console.log(value)
+    }, (reason) => {
+      console.log(reason)
+    })
+
+    promise.then(function() {
+
+    }, function() {
+
+    })
+    // 优化写法，直接使用catch捕获异常，
+    promise.then(() => {
+
+    }).catch(() => {
+
+    })
+
+    // 冒泡特性， 状态固化之后无法捕获，then如果不写参数会直接忽略
+    // 
+  </script>
+</body>
+</html>
