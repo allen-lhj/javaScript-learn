@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let map = new Map([['a', 1], ['b', 2]])
+    console.log(map)
+    for(let i of map) {
+      console.log(i)
+    }
+
+    let obj = {
+      a: 1,
+      b: 2,
+      c: 3,
+      [Symbol.iterator]() {
+        let nextIndex = 0;
+        let map = new Map();
+        for (let [key, value] of Object.entries(this)) {
+          map.set(key, value)
+        }
+        let mapEntries = [...map.entries()];
+        console.log(mapEntries);
+        return {
+          next() {
+            return nextIndex < mapEntries.length ?
+                    {value: mapEntries[nextIndex++], done: false} :
+                    {value: undefined, done: true}
+          },
+          // break终止iterator时会默认调用return方法
+          return () {
+            return {value: 1}
+          }
+        }
+      }
+    }
+    // 调用iterator接口的方法
+    // ...拓展符
+    // for of    Array.from    map,   set, 
+    // Promise.all()   promise.race()  yield
+  </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // generator传值
+    function * foo() {
+      let value1 = yield 1;
+      console.log('value1',value1);
+      
+      let value2 = yield 2;
+      console.log(value2);
+
+      let value3 = yield 3;
+      console.lg(value3);
+
+      let value4 = yield 4;
+      console.log(value4);
+    }
+
+    let iter = foo();
+    console.log(iter.next())
+    console.log(iter.next('b')) // value1 b
+    console.log(iter.next('c')) // value2 = c
+  </script>
+</body>
+</html>
