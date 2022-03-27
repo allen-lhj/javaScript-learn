@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let fs = require('fs');
+    const readFile = function(fileName) {
+      return new Promise((resolve, reject) => {
+        fs.readFile(fileName, function(err, data) {
+          if (err) { return reject(err); }
+          resolve(data);
+        })
+      })
+    }
+    function read() {
+      await readFile('./name.txt', 'utf-8')
+    }
+    var a = read();
+    console.log(a)
+  </script>
+</body>
+</html>
