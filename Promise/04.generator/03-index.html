@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function * get() {
+      yield 1;
+      yield 2;
+      return 10; // {value: 10, done: true}
+      yield 3;
+    }
+    let g = get();
+    console.log(g.next())
+    console.log(g.return()) // 直接done为true，后面的产出无效
+    console.log(g.next())
+    console.log(g.next())
+  </script>
+</body>
+</html>
