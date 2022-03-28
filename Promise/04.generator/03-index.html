@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // function * foo(x, y) {
+    //   return x + y;
+    // }
+
+    // var it = foo(6,7);
+    // var res = it.next()
+    // console.log(res)
+
+    // function * foo() {
+    //   var x = yield 2;
+    //   z++
+    //   var y = yield(x * z);
+    //   console.log(x, y, z);
+    // }
+
+    // var z = 1;
+    // var it1 = foo();
+    // var it2 = foo();
+    // var val1 = it1.next().value;
+    // val1 = it1.next()
+
+    // var x = 1;
+    // function foo() {
+    //   x++;
+    //   bar();
+    //   console.log('x:', x);
+    // }
+    // function bar() {
+    //   x++;
+    // }
+    // foo();
+
+    function* fib(max) {
+    var
+        t,
+        a = 0,
+        b = 1,
+        n = 0;
+    while (n < max) {
+        yield a;
+        [a, b] = [b, a + b];
+        n ++;
+    }
+    return;
+}
+var fib = fib(10)
+// console.log(fib.next());
+// console.log(fib.next());
+// console.log(fib.next());
+// console.log(fib.next());
+for (let i of fib) {
+  console.log(i)
+}
+  </script>
+</body>
+</html>

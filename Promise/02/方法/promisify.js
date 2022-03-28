@@ -16,10 +16,10 @@ function promisify (func) {
 
 let readFile = promisify(fs.readFile)
 
-// readFile('./name.txt', 'utf-8')
-// .then(data => readFile(data, 'utf-8'))
-// .then(data => readFile(data, 'utf-8'))
-// .then(data => console.log(data))
+readFile('./name.txt', 'utf-8')
+.then(data => readFile(data, 'utf-8'))
+.then(data => readFile(data, 'utf-8'))
+.then(data => console.log(data))
 
 function * read() {
   let value1 = yield readFile('./name.txt', 'utf-8');
@@ -30,18 +30,18 @@ function * read() {
 
 let iter = read();
 
-// let {value, done} = iter.next()
-// value.then((value1) => {
-//   console.log(value1)
-//   let {value, done} =  iter.next(value1);
-//   value.then(value2 => {
-//     console.log(value2)
-//     let {value, done} = iter.next(value2)
-//     value.then(value3 => {
-//       console.log(value3)
-//     })
-//   })
-// })
+let {value, done} = iter.next()
+value.then((value1) => {
+  console.log(value1)
+  let {value, done} =  iter.next(value1);
+  value.then(value2 => {
+    console.log(value2)
+    let {value, done} = iter.next(value2)
+    value.then(value3 => {
+      console.log(value3)
+    })
+  })
+})
 
 function Co(iter) {
   return new Promise((resolve, reject) => {
