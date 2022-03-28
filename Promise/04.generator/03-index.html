@@ -8,6 +8,7 @@
 </head>
 <body>
   <script>
+
     // function * foo(x, y) {
     //   return x + y;
     // }
@@ -61,6 +62,19 @@ var fib = fib(10)
 for (let i of fib) {
   console.log(i)
 }
+
+    function * get() {
+      yield 1;
+      yield 2;
+      return 10; // {value: 10, done: true}
+      yield 3;
+    }
+    let g = get();
+    console.log(g.next())
+    console.log(g.return()) // 直接done为true，后面的产出无效
+    console.log(g.next())
+    console.log(g.next())
+
   </script>
 </body>
 </html>

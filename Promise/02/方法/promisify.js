@@ -16,19 +16,33 @@ function promisify (func) {
 
 let readFile = promisify(fs.readFile)
 
+
 readFile('./name.txt', 'utf-8')
 .then(data => readFile(data, 'utf-8'))
 .then(data => readFile(data, 'utf-8'))
 .then(data => console.log(data))
 
-function * read() {
-  let value1 = yield readFile('./name.txt', 'utf-8');
-  let value2 = yield readFile(value1, 'utf-8');
-  let value3 = yield readFile(value2, 'utf-8')
-  console.log(value3);
+async function read() {
+  var value = await readFile('./name.txt', 'utf-8');
+  // console.log(value)
+  return value;
 }
+var a = read()
+console.log(a)
+// readFile('./name.txt', 'utf-8')
+// .then(data => readFile(data, 'utf-8'))
+// .then(data => readFile(data, 'utf-8'))
+// .then(data => console.log(data))
 
-let iter = read();
+
+// function * read() {
+//   let value1 = yield readFile('./name.txt', 'utf-8');
+//   let value2 = yield readFile(value1, 'utf-8');
+//   let value3 = yield readFile(value2, 'utf-8')
+//   console.log(value3);
+// }
+
+// let iter = read();
 
 let {value, done} = iter.next()
 value.then((value1) => {
@@ -43,27 +57,27 @@ value.then((value1) => {
   })
 })
 
-function Co(iter) {
-  return new Promise((resolve, reject) => {
-    let next = (data) => {
-      let {value, done} = iter.next(data);
-      if (done) {
-        // 递归出口
-        resolve(value)
-      } else {
-        value.then((val) => {
-          next(val)
-        },(err) => {
-          console.log(err)
-        })
-      }
-    }
-    next();
-  })
-}
+// function Co(iter) {
+//   return new Promise((resolve, reject) => {
+//     let next = (data) => {
+//       let {value, done} = iter.next(data);
+//       if (done) {
+//         // 递归出口
+//         resolve(value)
+//       } else {
+//         value.then((val) => {
+//           next(val)
+//         },(err) => {
+//           console.log(err)
+//         })
+//       }
+//     }
+//     next();
+//   })
+// }
 
-let promise = Co(read())
+// let promise = Co(read())
 
-promise.then((val) => {
-  console.log(val)
-})
+// promise.then((val) => {
+//   console.log(val)
+// })
