@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // let [a, b, c] = [1,2,3];
+    let [foo, [[bar], baz]] = [1, [[2], 3]];
+    console.log(foo); // 1
+    console.log(bar); // 2
+    console.log(baz); // 3
+
+    // let {a: a, b: b, c: c} = {a:1,b:2,c:3};
+    // 对象的解构不存在顺序
+    let {a, b, c} = {c:3, a:1,b:2};
+    
+
+  </script>
+</body>
+</html>
