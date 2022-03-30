@@ -28,7 +28,7 @@
         // this.style.backgroundColor = 'red'
         self.innerHTML = '加载更多';
         self.className = '';
-      },2000)
+      }, 2000)
     }
     // 具柄方式，当再次绑定onclick事件时会将上面的函数覆盖
     oBtn.onclick = function() {
@@ -41,10 +41,10 @@
       console.log(1)
     }
     // addEventListener 想要多次执行需要绑定不同函数，或者匿名函数
-    oBtn.addEventListener('click', function() {
+    oBtn.addEventListener('click', () =>{
       console.log(2)
     }, false)
-    oBtn.addEventListener('click', function() {
+    oBtn.addEventListener('click', ()=> {
       console.log(3)
     }, false)
   </script>
