@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let set = new Set([1,2,3, {name: 'xs'}]); // 成员是唯一的数组,参数需要具备迭代器接口
+    set.add(5)
+    set.add(7)
+    console.log(set.size)
+    set.delete(5)
+    console.log(set);
+    console.log(set.keys())
+    console.log(set.entries())
+    // 数组去重
+    let arr = [1,1,1,2,2,3,3];
+    let newSet = new Set(arr)
+    console.log([...newSet])
+  </script>
+</body>
+</html>
